@@ -1,25 +1,29 @@
 class CeleCislo:
-    def __init__(self,cisla = []):
-        self.cisla = cisla
+    def __init__(self,cislo):
+        self.cislo = cislo
     def je_prirozene(self):
-        for cislo in self.cisla:
-          if (cislo > 0 or cislo == 0):
-            print(f"{cislo} je prirozene")
-          else:
-            print(f"{cislo} neni prirozene")
-
-    def __str__(self):
-        return str(self.cisla)
+          if (self.cislo > 0 or self.cislo==0):
+            return True
+          return False  
+    
     def je_prvocislo(self):
-      for i in range(2,int(self.cisla**0,5)+1):
-        if(self.cisla%i==0):
-          return True
-        else:
+      if self.cislo < 0:
+        return False
+      for i in range(2,int(self.cislo**0.5)+1):
+        if self.cislo%i==0:
           return False
-      
+      return True
+        
+    def __str__(self):
+      prirozene_text = "je" if self.je_prirozene() else "není"
+      prvocislo_text = "je" if self.je_prvocislo() else "není"
+
+      return f"Číslo {self.cislo} {prirozene_text} přirozené a {prvocislo_text} prvočíslo."
+
+cisla = [-11, -1, 0, 5, 27, 29]
+for cislo in cisla:
+    cislo = CeleCislo(cislo)
+    print(cislo)
 
 
-cisla = CeleCislo([11, -1, 0, 5, 27, 29])
-cisla.je_prirozene()
-cisla.je_prvocislo()
-print(cisla)
+
